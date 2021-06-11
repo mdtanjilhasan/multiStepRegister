@@ -65,23 +65,12 @@ export default {
                 this.imgEventArr.nidBack = event
             }
             this.$emit('registrationData',this.imgEventArr);
-            console.log('this.imgEventArr')
-            console.log(this.imgEventArr)
         }
-    },
-    created() {
-        console.log('three component created')
-    },
-    destroyed() {
-        console.log('three component destroyed')
     },
     activated() {
         if (this.imgEventArr) {
             this.$emit('registrationData',this.imgEventArr);
         }
-    },
-    deactivated() {
-        console.log('three component Inactive')
     }
 }
 </script>

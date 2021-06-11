@@ -18,9 +18,9 @@ class ReregistrationController extends Controller
     {
         $this->validate($request,[
             'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|digits:11',
-            'nid' => 'required|numeric',
+            'email' => 'required|email|unique:lecturers,email',
+            'phone' => 'required|digits:11|unique:lecturers,phone',
+            'nid' => 'required|numeric|unique:lecturers,nid',
             'avatar' => 'required|image',
             'nidFont' => 'required|image',
             'nidBack' => 'required|image',

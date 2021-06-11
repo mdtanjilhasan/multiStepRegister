@@ -72,21 +72,8 @@ export default {
             if (type === 'publication') {
                 this.data.publication[index] = event.target.value
             }
-            console.log(this.data)
             this.$emit('registrationData',this.data);
         }
-    },
-    created() {
-        console.log('Two created')
-    },
-    destroyed() {
-        console.log('Two destroyed')
-    },
-    activated() {
-        console.log('Two Active')
-    },
-    deactivated() {
-        console.log('Two Inactive')
     }
 }
 </script>

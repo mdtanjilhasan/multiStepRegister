@@ -4,11 +4,15 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
+                    <error-success-component v-if="errorMessagesArray.length > 0" :errors="errorMessagesArray" @close="onClose"></error-success-component>
                     <form enctype="multipart/form-data" @submit.prevent="onSave">
                         <keep-alive>
-                            <first-step-component v-if="step === 1" @registrationData="setRegisterData"></first-step-component>
-                            <second-step-component v-if="step === 2" @registrationData="setRegisterData"></second-step-component>
-                            <third-step-component v-if="step === 3"  @registrationData="setRegisterData"></third-step-component>
+                            <first-step-component v-if="step === 1"
+                                                  @registrationData="setRegisterData"></first-step-component>
+                            <second-step-component v-if="step === 2"
+                                                   @registrationData="setRegisterData"></second-step-component>
+                            <third-step-component v-if="step === 3"
+                                                  @registrationData="setRegisterData"></third-step-component>
                         </keep-alive>
                         <buttons-component :step="step" @prev="previous" @next="next"></buttons-component>
                     </form>
@@ -23,21 +27,22 @@ export default {
     name: "BaseeComponent",
     data() {
         return {
-            step:1,
-            registration:{
-                name:null,
-                email:null,
-                phone:null,
-                nid:null,
-                avatar:null,
-                nidFront:null,
-                nidBack:null,
+            step: 1,
+            registration: {
+                name: null,
+                email: null,
+                phone: null,
+                nid: null,
+                avatar: null,
+                nidFront: null,
+                nidBack: null,
                 achievements: {
-                    education : [],
-                    publication : [],
-                    experience : []
+                    education: [],
+                    publication: [],
+                    experience: []
                 }
-            }
+            },
+            errorMessagesArray: []
         }
     },
     methods: {
@@ -48,17 +53,12 @@ export default {
             this.step++
         },
         setRegisterData(data) {
-            console.log('data')
-            console.log(data)
             let properties = ['education', 'publication', 'experience'];
             for (const property in data) {
                 if (properties.includes(property)) {
                     this.registration.achievements[property] = data[property]
                 } else {
                     this.registration[property] = data[property]
-                    console.log('data[property]')
-                    console.log(data[property])
-                    console.log(property)
                 }
             }
         },
@@ -80,15 +80,23 @@ export default {
             params.append('educations', this.registration.achievements.education);
             params.append('publications', this.registration.achievements.publication);
             params.append('experiences', this.registration.achievements.experience);
-            console.log(this.registration);
-
+            let obj = this
             axios.post('/registration', params)
                 .then(function (response) {
-                    console.log(response);
+                    alert(response.data.message);
+                    location.reload()
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if (error.response.status === 422) {
+                        let errors = error.response.data.errors
+                        for (const property in errors) {
+                            obj.errorMessagesArray.push(errors[property][0]);
+                        }
+                    }
                 });
+        },
+        onClose() {
+            this.errorMessagesArray = []
         }
     }
 };

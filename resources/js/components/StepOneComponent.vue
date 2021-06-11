@@ -40,18 +40,6 @@ export default {
       registrationData() {
           this.$emit('registrationData',this.registration);
       }
-    },
-    created() {
-        console.log('StepOneComponent created')
-    },
-    destroyed() {
-        console.log('StepOneComponent destroyed')
-    },
-    activated() {
-        console.log('StepOneComponent Active')
-    },
-    deactivated() {
-        console.log('StepOneComponent Inactive')
     }
 }
 </script>

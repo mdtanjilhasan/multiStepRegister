@@ -5,6 +5,7 @@ Vue.component('first-step-component', require('./components/StepOneComponent.vue
 Vue.component('second-step-component', require('./components/StepTwoComponent.vue').default);
 Vue.component('third-step-component', require('./components/StepThreeComponent.vue').default);
 Vue.component('buttons-component', require('./components/ButtonsComponent.vue').default);
+Vue.component('error-success-component', require('./components/ErrorSuccess.vue').default);
 
 const app = new Vue({
     el: '#app'
