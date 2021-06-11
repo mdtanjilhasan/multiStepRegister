@@ -38,22 +38,35 @@ export default {
                 avatar: '',
                 nidFront: '',
                 nidBack: '',
+            },
+            imgEventArr: {
+                avatar: '',
+                nidFront: '',
+                nidBack: '',
             }
+
         }
     },
     methods: {
         imageUpload(event,type) {
-            const file = event.target.files[0]
             if (type === 'avatar') {
+                let file = event.target.files[0]
                 this.imageArray.avatar = URL.createObjectURL(file)
+                this.imgEventArr.avatar = event
             }
             if (type === 'nid_front') {
+                let file = event.target.files[0]
                 this.imageArray.nidFront = URL.createObjectURL(file)
+                this.imgEventArr.nidFront = event
             }
             if (type === 'nid_back') {
+                let file = event.target.files[0]
                 this.imageArray.nidBack = URL.createObjectURL(file)
+                this.imgEventArr.nidBack = event
             }
-            this.$emit('registrationData',this.imageArray);
+            this.$emit('registrationData',this.imgEventArr);
+            console.log('this.imgEventArr')
+            console.log(this.imgEventArr)
         }
     },
     created() {
@@ -63,7 +76,9 @@ export default {
         console.log('three component destroyed')
     },
     activated() {
-        console.log('three component Active')
+        if (this.imgEventArr) {
+            this.$emit('registrationData',this.imgEventArr);
+        }
     },
     deactivated() {
         console.log('three component Inactive')

@@ -2,26 +2,26 @@
     <div>
         <h1>Step Two</h1>
         <div class="form-group">
-            <label>Education <button class="btn btn-info btn-sm" @click="addRow('education')">Add row</button></label>
+            <label>Education <button type="button" class="btn btn-info btn-sm" @click.prevent="addRow('education')">Add row</button></label>
             <div v-for="(value, key) in data.education">
                 <input type="text" class="form-control mb-1" :id="'education_' + key" v-model="data.education[key]" @input="registrationData($event, 'education', key)" placeholder="Enter Education">
-                <button v-if="key > 0" @click="deleteRow(key,'education')" class="btn btn-danger btn-sm mb-1">X</button>
+                <button v-if="key > 0" type="button" @click.prevent="deleteRow(key,'education')" class="btn btn-danger btn-sm mb-1">X</button>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Publications <button class="btn btn-info btn-sm" @click="addRow('publication')">Add row</button></label>
+            <label>Publications <button type="button" class="btn btn-info btn-sm" @click.prevent="addRow('publication')">Add row</button></label>
             <div v-for="(value, key) in data.publication">
                 <input type="text" class="form-control mb-1" :id="'publication_' + key" v-model="data.publication[key]" @input="registrationData($event, 'publication', key)" placeholder="Enter Publication">
-                <button v-if="key > 0" @click="deleteRow(key, 'publication')" class="btn btn-danger btn-sm mb-1">X</button>
+                <button v-if="key > 0" type="button" @click.prevent="deleteRow(key, 'publication')" class="btn btn-danger btn-sm mb-1">X</button>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Experience <button class="btn btn-info btn-sm" @click="addRow('experience')">Add row</button></label>
+            <label>Experience <button type="button" class="btn btn-info btn-sm" @click.prevent="addRow('experience')">Add row</button></label>
             <div v-for="(value, key) in data.experience">
                 <input type="text" class="form-control mb-1" :id="'experience_' + key" v-model="data.experience[key]" @input="registrationData($event, 'experience', key)" placeholder="Enter Experience">
-                <button v-if="key > 0" @click="deleteRow(key, 'experience')" class="btn btn-danger btn-sm mb-1">X</button>
+                <button v-if="key > 0" type="button" @click.prevent="deleteRow(key, 'experience')" class="btn btn-danger btn-sm mb-1">X</button>
             </div>
         </div>
     </div>

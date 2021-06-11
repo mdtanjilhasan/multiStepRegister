@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button v-if="step > 1" type="button" class="btn btn-primary" @click="$emit('prev', step);">Previous</button>
-        <button v-if="step < 3" type="button" class="btn btn-primary" @click="$emit('next', step);">Next</button>
-        <button v-if="step === 3" type="submit" class="btn btn-success" @click.prevent="$emit('onSubmit')">Submit</button>
+        <button v-if="step > 1" type="button" class="btn btn-primary" @click.prevent="$emit('prev', step);">Previous</button>
+        <button v-if="step < 3" type="button" class="btn btn-primary" @click.prevent="$emit('next', step);">Next</button>
+        <button v-if="step === 3" type="submit" class="btn btn-success">Submit</button>
     </div>
 </template>
 

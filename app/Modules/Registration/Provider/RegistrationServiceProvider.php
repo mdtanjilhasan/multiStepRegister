@@ -24,8 +24,8 @@ class RegistrationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        Route::group(['prefix' => 'registration'], function () {
+        Route::group(['prefix' => 'registration'], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-//        });
+        });
     }
 }
