@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Registration Form</title>
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script defer src="{{ mix('js/app.js') }}"></script>
     </head>
